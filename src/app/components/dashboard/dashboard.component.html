@@ -1,0 +1,28 @@
+<div *ngIf="displayError" class="alert alert-dismissible alert-danger">
+  <div class="text-center">
+    <strong>City name not found in our database</strong>
+  </div>
+</div>
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-lg-4">
+      <img src="../../../assets/weather.png" alt="Weather Image" width="300px" height="300px">
+    </div>
+    <div class="col-lg-6">
+      <label for="city" class="mb-2">City</label>
+      <input [(ngModel)]="city" class="form-control form-control-lg" id="city" placeholder="Ex.: Buenos Aires">
+      <button (click)="getWeather()" class="btn btn-primary btn-lg btn-block my-4" [disabled]="city == ''">Get
+        Weather</button>
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-primary" role="status"></div>
+      </div>
+      <div *ngIf="query" class="card">
+        <div class="card-body">
+          <p><b>Temperature: </b>{{temp}}° C</p>
+          <p><b>Humidity: </b>{{humidity}} %</p>
+          <p><b>Climate: </b>{{weather}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
